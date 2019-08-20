@@ -44,3 +44,5 @@ Route::prefix('basics')->group(function() {
     })->name('category.show');
     
 });
+
+Route::get('/product/{id}/{type?}', 'ProductController@show')->name('product.show');
