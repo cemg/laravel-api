@@ -2,19 +2,84 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use Illuminate\Http\Request;
+
 class ProductController extends Controller
 {
-    public function show($id, $r_type = 'test')
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        //return "Product Id: $id, Type: $r_type";
-        //return view('product', ['id'=> $id, 'name'=> 'Product 1', 'r_type'=> $r_type]);
-        
-        $name = 'Product 1';
-        
-        $categories = ['Category 1', 'Category 2', 'Category 3'];
-        
-        return view('product', compact('id', 'name', 'r_type', 'categories'));
-        
-        //return view('product')->with('id', $id)->with('name', $name)->with('r_type', $r_type);
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Product $product)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Product $product)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Product $product)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Product $product)
+    {
+        //
     }
 }

@@ -45,4 +45,7 @@ Route::prefix('basics')->group(function() {
     
 });
 
-Route::get('/product/{id}/{type?}', 'ProductController@show')->name('product.show');
+//Route::get('/product/{id}/{type?}', 'ProductController@show')->name('product.show');
+
+//Route::resource('/products', 'ProductController')->only(['index', 'show']);
+Route::resource('/products', 'ProductController')->except(['destroy']);
