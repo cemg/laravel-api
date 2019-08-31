@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\UserCollection;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
@@ -28,7 +30,9 @@ class UserController extends Controller
             $qb->orderBy($request->query('sortBy'), $request->query('sort', 'DESC'));
     
         $data = $qb->offset($offset)->limit($limit)->get();
-    
+        
+        $data->each->setAppends(['full_name']);
+        
         return response($data, 200);
     }
 
@@ -96,5 +100,24 @@ class UserController extends Controller
         return response([
             'message' => 'User deleted'
         ], 200);
+    }
+    
+    public function custom1()
+    {
+        //$user2 = User::find(2);
+        //UserResource::withoutWrapping();
+        //return new UserResource($user2);
+    
+        $users = User::all();
+        //return UserResource::collection($users);
+        
+        //return new UserCollection($users);
+        
+        return UserResource::collection($users)->additional([
+            'meta' => [
+                'total_users' => $users->count(),
+                'custom' => 'value'
+            ]
+        ]);
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductResource;
+use App\Http\Resources\ProductWithCategoriesResource;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -29,11 +31,13 @@ class ProductController extends Controller
         $qb = Product::query()->with('categories');
         if ($request->has('q'))
             $qb->where('name', 'like', '%' . $request->query('q') . '%');
-    
+        
         if ($request->has('sortBy'))
             $qb->orderBy($request->query('sortBy'), $request->query('sort', 'DESC'));
         
         $data = $qb->offset($offset)->limit($limit)->get();
+        
+        $data = $data->makeHidden('slug');
         
         return response($data, 200);
     }
@@ -114,5 +118,41 @@ class ProductController extends Controller
         return response([
             'message' => 'Product deleted'
         ], 200);
+    }
+    
+    public function custom1()
+    {
+        //return Product::select('id', 'name')->orderBy('created_at', 'desc')->take(10)->get();
+        return Product::selectRaw('id as product_id, name as product_name')
+            ->orderBy('created_at', 'desc')->take(10)->get();
+    }
+    
+    public function custom2()
+    {
+        $products = Product::orderBy('created_at', 'desc')->take(10)->get();
+        
+        $mapped = $products->map(function ($product) {
+            return [
+                '_id'           => $product['id'],
+                'product_name'  => $product['name'],
+                'product_price' => $product['price'] * 1.03
+            ];
+        });
+        
+        return $mapped->all();
+    }
+    
+    public function custom3()
+    {
+        $products = Product::paginate(10);
+        
+        return ProductResource::collection($products);
+    }
+    
+    public function listWithCategories()
+    {
+        $products = Product::with('categories')->paginate(10);
+        
+        return ProductWithCategoriesResource::collection($products);
     }
 }

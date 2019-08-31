@@ -16,7 +16,7 @@ class ProductsTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         
         DB::statement("TRUNCATE TABLE products");
-        factory(Product::class, 1000)->create();
+        factory(Product::class, 200)->create();
     
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
