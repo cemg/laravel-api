@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware('auth')->get('/secured', function() {
+   return "You are authenticated!";
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
