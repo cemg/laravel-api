@@ -22,3 +22,4 @@ Route::middleware('auth')->get('/secured', function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/upload', 'HomeController@upload_form')->name('upload_form');
