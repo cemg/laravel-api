@@ -1,4 +1,4 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 # Laravel 7 ile Sıfırdan RESTful API Uygulamaları Geliştirme (Develop RESTful API Projects From Scratch With Laravel 7)
 
