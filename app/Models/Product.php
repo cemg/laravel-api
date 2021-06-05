@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -11,12 +12,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Product extends Model
 {
+    use HasFactory;
+
     //protected $table = 'products';
     //protected $fillable = ['name', 'slug', 'price'];
     protected $guarded = [];
     //protected $hidden = ['slug'];
-    
+
     public function categories() {
-        return $this->belongsToMany('App\Category', 'product_categories');
+        return $this->belongsToMany('App\Models\Category', 'product_categories');
     }
 }

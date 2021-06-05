@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Category;
+use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CategoryController extends ApiController
 {
@@ -30,11 +29,11 @@ class CategoryController extends ApiController
      */
     public function store(Request $request)
     {
-        $category = new Category;
+        $category       = new Category;
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
         $category->save();
-    
+
         return $this->apiResponse(ResultType::Success, $category, 'Category created.', 201);
     }
 
@@ -61,10 +60,10 @@ class CategoryController extends ApiController
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
         $category->save();
-    
+
         return $this->apiResponse(ResultType::Success, $category, 'Category updated.', 200);
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -75,17 +74,19 @@ class CategoryController extends ApiController
     public function destroy(Category $category)
     {
         $category->delete();
-    
+
         return $this->apiResponse(ResultType::Success, null, 'Category deleted', 200);
     }
-    
-    public function custom1() {
+
+    public function custom1()
+    {
         //return Category::pluck('id');
         //return Category::pluck('id', 'name');
         return Category::pluck('name', 'id');
     }
-    
-    public function report1() {
+
+    public function report1()
+    {
         return DB::table('product_categories as pc')
             ->selectRaw('c.name, COUNT(*) as total')
             ->join('categories as c', 'c.id', '=', 'pc.category_id')

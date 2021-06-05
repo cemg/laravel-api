@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 
 /*
@@ -22,14 +23,14 @@ Route::middleware('auth.basic')->get('/user-basic', function (Request $request) 
 });
 
 Route::get('categories/custom1', 'Api\CategoryController@custom1');
-Route::get('products/custom1', 'Api\ProductController@custom1');
+Route::get('products/custom1', [ProductController::class, 'custom1']);
 Route::get('products/custom2', 'Api\ProductController@custom2');
 Route::get('categories/report1', 'Api\CategoryController@report1');
 Route::get('users/custom1', 'Api\UserController@custom1');
 Route::get('products/custom3', 'Api\ProductController@custom3');
 Route::get('products/listwithcategories', 'Api\ProductController@listWithCategories');
 
-Route::middleware(['auth:api', 'throttle:rate_limit,1'])->group(function() {
+Route::middleware(['auth:api', 'throttle:rate_limit,1'])->group(function () {
 
     Route::apiResources([
         'users'      => 'Api\UserController',
@@ -39,7 +40,7 @@ Route::middleware(['auth:api', 'throttle:rate_limit,1'])->group(function() {
 
 });
 
-Route::middleware('throttle:5|rate_limit,1')->group(function() {
+Route::middleware('throttle:5|rate_limit,1')->group(function () {
     Route::get('/throttle-guest', function () {
         echo "Throttle guest test...";
     });

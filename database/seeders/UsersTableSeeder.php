@@ -1,6 +1,8 @@
 <?php
 
-use App\User;
+namespace Database\Seeders;
+
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -15,7 +17,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::statement("TRUNCATE TABLE users");
-        
+
         DB::table("users")->insert([
             'name'              => 'admin',
             'email'             => 'admin@laravelapi.test',
@@ -24,7 +26,7 @@ class UsersTableSeeder extends Seeder
             'remember_token'    => Str::random(10),
             'api_token'         => Str::random(60)
         ]);
-        
-        factory(User::class, 10)->create();
+
+        User::factory()->count(10)->create();
     }
 }

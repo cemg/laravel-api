@@ -1,6 +1,8 @@
 <?php
 
-use App\Product;
+namespace Database\Seeders;
+
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,10 +16,10 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        
+
         DB::statement("TRUNCATE TABLE products");
-        factory(Product::class, 200)->create();
-    
+        Product::factory()->count(200)->create();
+
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 }

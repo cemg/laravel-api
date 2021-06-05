@@ -15,14 +15,14 @@ class BaseFormRequest extends FormRequest
     /**
      * Handle a failed validation attempt.
      *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @param \Illuminate\Contracts\Validation\Validator $validator
      * @return void
      *
      */
     protected function failedValidation(Validator $validator)
     {
         $errors = (new ValidationException($validator))->errors();
-        
+
         throw new HttpResponseException(
             (new ApiController)->apiResponse(ResultType::Error, $errors, 'Validation error!', JsonResponse::HTTP_UNPROCESSABLE_ENTITY)
         );

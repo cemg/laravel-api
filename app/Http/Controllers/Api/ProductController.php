@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductWithCategoriesResource;
-use App\Product;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -27,7 +26,7 @@ class ProductController extends ApiController
         //return response(Product::paginate(10), 200);
 
         $offset = $request->has('offset') ? $request->query('offset') : 0;
-        $limit = $request->has('limit') ? $request->query('limit') : 10;
+        $limit  = $request->has('limit') ? $request->query('limit') : 10;
 
         $qb = Product::query()->with('categories');
         if ($request->has('q'))
@@ -54,9 +53,9 @@ class ProductController extends ApiController
         //$input = $request->all();
         //$product = Product::create($input);
 
-        $product = new Product;
-        $product->name = $request->name;
-        $product->slug = Str::slug($request->name);
+        $product        = new Product;
+        $product->name  = $request->name;
+        $product->slug  = Str::slug($request->name);
         $product->price = $request->price;
         $product->save();
 
@@ -73,9 +72,9 @@ class ProductController extends ApiController
     {
         try {
             $product = Product::findOrFail($id);
+
             return $this->apiResponse(ResultType::Success, $product, 'Product Found.', 200);
-        }
-        catch(ModelNotFoundException $exception) {
+        } catch (ModelNotFoundException $exception) {
             return $this->apiResponse(ResultType::Error, null, 'Product Not Found!', 404);
         }
     }
@@ -92,8 +91,8 @@ class ProductController extends ApiController
         //$input = $request->all();
         //$product->update($input);
 
-        $product->name = $request->name;
-        $product->slug = Str::slug($request->name);
+        $product->name  = $request->name;
+        $product->slug  = Str::slug($request->name);
         $product->price = $request->price;
         $product->save();
 

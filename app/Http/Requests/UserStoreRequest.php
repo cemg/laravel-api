@@ -27,13 +27,14 @@ class UserStoreRequest extends BaseFormRequest
             'password' => 'required'
         ];
     }
-    
-    public function messages() {
+
+    public function messages()
+    {
         return [
-            'email.required' => 'Email alanı gereklidir.',
-            'name.required' => 'Name alanı gereklidir.',
+            'email.required'    => 'Email alanı gereklidir.',
+            'name.required'     => 'Name alanı gereklidir.',
             'password.required' => 'Password alanı gereklidir.',
-            'email.unique' => 'Bu email adresi ile daha önce kayıt olunmuş.'
+            'email.unique'      => 'Bu email adresi ile daha önce kayıt olunmuş.'
         ];
     }
 }

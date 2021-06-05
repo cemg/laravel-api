@@ -28,7 +28,8 @@ class UploadRequest extends FormRequest
         ];
     }
     
-    public function messages() {
+    public function messages()
+    {
         return [
             'image' => ':attribute alanı resim olmalıdır.',
         ];
