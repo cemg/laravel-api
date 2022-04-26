@@ -1,5 +1,3 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
-
 # Laravel 7 ile Sıfırdan RESTful API Uygulamaları Geliştirme (Develop RESTful API Projects From Scratch With Laravel 7)
 
 Bu kursumuzda sıfırdan adım adım bir RESTful API uygulamasının nasıl geliştirileceğini öğrenmiş olacaksınız.
@@ -23,10 +21,6 @@ Kursumuzu tamamladığınızda aktif bir projeniz için veya sıfırdan oluştur
 ## Katkıda Bulunma (Contributing)
 
 Bu proje kurs kapsamında oluşturulmuştur. Kurs içeriği dışında isterseniz projemize katkıda bulunabilirsiniz.
-
-## İletişim (Contact)
-
-Proje içerisinde yer alan kodlamalarla ilgili görüş ve önerilerinizi cmg.web@gmail.com adresinden bana iletebilirsiniz. 
 
 ## Lisans (License)
 
