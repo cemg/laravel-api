@@ -1,9 +1,9 @@
-# Laravel 7 ile Sıfırdan RESTful API Uygulamaları Geliştirme (Develop RESTful API Projects From Scratch With Laravel 7)
+# Laravel 7 ile Sıfırdan RESTful API Uygulamaları Geliştirme
 
 Bu kursumuzda sıfırdan adım adım bir RESTful API uygulamasının nasıl geliştirileceğini öğrenmiş olacaksınız.
 Kursumuzu tamamladığınızda aktif bir projeniz için veya sıfırdan oluşturacağınız projeleriniz için API altyapısı hazırlayabilirsiniz.
 
-## Bölümler (Curriculum)
+## Bölümler
 1. Giriş
 2. Laravel'in Temelleri
 3. RESTful API Geliştirme
@@ -15,14 +15,14 @@ Kursumuzu tamamladığınızda aktif bir projeniz için veya sıfırdan oluştur
 9. API Belgelendirme ve Test İşlemleri
 10. API Uygulamasını Yayınlama
 
-## Bağlantılar (Links)
+## Bağlantılar
 - [Udemy Kurs Sayfası](https://link.uzaktankurs.com/RESTFULAPI)
 
-## Katkıda Bulunma (Contributing)
+## Katkıda Bulunma
 
 Bu proje kurs kapsamında oluşturulmuştur. Kurs içeriği dışında isterseniz projemize katkıda bulunabilirsiniz.
 
-## Lisans (License)
+## Lisans
 
 Project files are open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
